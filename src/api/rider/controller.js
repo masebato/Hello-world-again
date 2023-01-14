@@ -13,13 +13,12 @@ const requestRide = async (req, res) => {
     if (!tripCreated) {
       return res.status(424).send(MESSAGES.AVAILABILITY_FAIL);
     }
-    return res
-      .status(200)
-      .send({
-        MESSAGE: MESSAGES.TRIP_START,
-        DATE: tripCreated.DATE_START,
-        ID_TRIP: tripCreated.ID_TRIP,
-      });
+
+    return res.status(200).send({
+      MESSAGE: MESSAGES.TRIP_START,
+      DATE: tripCreated.DATE_START,
+      ID_TRIP: tripCreated.ID_TRIP,
+    });
   } catch (error) {
     console.log(error.message);
     return res.status(500).send({ error: error.message });
